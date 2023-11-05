@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var op=prompt("enter the operation:",'+');
+        var num1=parseFloat(prompt("enter the fisrt number:",'1'));
+        var num2=parseFloat(prompt("enter the second number:",'10'));
+        var result;
+
+        if(op=='+')
+        {
+            result=num1+num2;
+        }
+        else if(op=='-'){
+            result=num1-num2;
+        }
+        else if(op=='*'){
+            result=num1*num2;
+        }
+        else if(op=='/'){
+            result=num1/num2;
+        }
+        else{
+            result="not valid";
+        }
+        console.log(`${num1} ${op} ${num2} = ${result}`);
+    </script>
+</body>
+</html>
