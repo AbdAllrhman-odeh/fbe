@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let input = parseInt(prompt("Enter your birthdate month (1-12):"));
+        if(input>=1&&input<=12){
+            let month;
+            if(input==1){
+                month="January";
+            }
+            else if(input==2){
+                month="February";
+            }
+            else if(input==3){
+                month = "March";
+            } 
+            else if(input==4){
+                month="April";
+            }
+            else if (input==5){
+                month="May";
+            }
+            else if(input==6){
+                month="June";
+            } 
+            else if(input==7){
+                month="July";
+            } 
+            else if(input==8) {
+                month="August";
+            } 
+            else if(input==9){
+                month="September";
+            } 
+            else if(input==10){
+                month="October";
+            } 
+            else if(input==11){
+                month="November";
+            } 
+            else{
+                month="December";
+            }
+
+            console.log(`The input: ${input}`);
+            console.log(`The output: ${month}`);
+        } 
+        else{
+            console.log("wrong input,enter a number between 1 and 12.");
+        }
+
+    </script>
+</body>
+</html>

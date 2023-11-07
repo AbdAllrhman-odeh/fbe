@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        body{
+            font-size: 40px;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function functionName(parameters) {
+            // Function code or statements
+            let result;
+            // ...
+            return result; // Optional
+        }
+        
+        function printHello(){
+            document.writeln("hello<br>");
+        }
+
+
+        function addTwoNumbers(x,y){
+            let sum=x+y;
+            document.writeln(`The sum is: ${sum}<br>`);
+            
+        }
+
+        function checkInput(x,y){
+            if(isNaN(x) || isNaN(y)){
+                return false;
+            }
+            else{
+                return true;
+            }
+        }
+
+        function addTwoNumbersFromUser(){
+            //collect data from user
+            let x=parseFloat(prompt('enter the value of x:',0));
+            let y=parseFloat(prompt('enter the value of y:',0));
+            //check input 
+            if(checkInput(x,y))
+            {
+                addTwoNumbers(x,y);
+            }
+            else{
+                document.write('wrong input<br>');
+            }
+            return;
+        }
+
+        function returnSum(){
+            let x=1;
+            let y=2;
+            let sum=x+y;
+            return sum;
+        }
+
+        printHello();//argument
+        addTwoNumbers(10,20);
+        addTwoNumbersFromUser();
+        let z=returnSum();
+        document.write(`z = ${z}`);
+
+
+    </script>
+</body>
+</html>

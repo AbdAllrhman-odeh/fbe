@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function solve(x){
+            let flag=0;
+            let str=x.toString();
+            for(let i=0;i<=9;i++)
+            {
+                for(let j=0;j<str.length;j++)
+                {
+                    if(i==str[j]){ flag++; break;}
+                }
+            }
+            if(flag>=10) return true;
+            return false;
+        }
+        let x=90864523148909;
+        if(solve(x))
+        {
+            document.write('true');
+        }
+        else document.write('false');
+    </script>
+</body>
+</html>
