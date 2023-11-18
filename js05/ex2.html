@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>examples</title>
+    <style>
+        body{
+            height: 2000px;
+        }
+        input[type="text"]{
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body id="body">
+    <div id="one" onclick="console.log('clicked the div1')">
+        he<mark>iiii</mark>llo
+    </div>
+    <div id="two">
+        hellobr
+        <br>
+        <button id="btn" onclick="console.log('clicked')">save</button>
+    </div>
+    <div class="one">
+        hello <br>
+        <button id="btn2">save</button>
+    </div>
+    <div class="one">
+        hello
+    </div>
+    <form action="" onsubmit="console.log('submiteddddd')">
+        Name:
+        <input type="text" name="name" placeholder="your Name" value="abc" onfocus="onfocusFun()"><br>
+        email:
+        <input type="email" name="email" placeholder="your email" value="abcdddd"><br>
+        <input type="submit" value="submit" ><br>
+
+    </form>
+    <hr><br>
+    <form action="">
+        Name:
+        <input type="text" name="name" placeholder="your Name" value="abc"><br>
+        email:
+        <input type="email" name="email" placeholder="your email" value="abcdddd">
+    </form>
+    <a href="asdf">one</a>
+    <a href="asdf">two</a>
+</body>
+<script>
+    
+    var getId=document.getElementById('btn2');
+    getId.onclick=function(){
+        console.log('clicked .. ');
+    };
+
+    getId=document.getElementById('body');
+    getId.onscroll=function(){
+        console.log('scrolled ... ');
+    };
+
+    getId.onresize=function(){
+        console.log('resized .. .. ');
+        var t=document.getElementById('two');
+        t.setAttribute('style','color:blue;');
+    };
+
+    onload=function(){
+        console.log('load');
+    };
+
+    function onfocusFun(){
+        var x=document.forms[0].name;
+        x.value="changed";
+    }
+
+
+
+</script>
+</html>

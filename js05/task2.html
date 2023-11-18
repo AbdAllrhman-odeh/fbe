@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <select name="" id="one">
+        <option value="jor" selected>jor</option>
+        <option value="egy">egy</option>
+        <option value="mor">mor</option>
+    </select>
+    <div id="img">
+        <img src="jor.png" alt="jordan flag">
+    </div>
+</body>
+<script>
+    var element=document.getElementById('one');
+    element.onchange=function(){
+        var changeImg;
+        if(element.value=='egy')
+        {
+            console.log('changed to egy..');
+            changeImg=document.getElementById('img');
+            changeImg.innerHTML="<img src='egy.png' alt='egy flag'>";
+        }
+        else if(element.value=='mor'){
+            console.log('changed to mor..');
+            changeImg=document.getElementById('img');
+            changeImg.innerHTML="<img src='mor.png' alt='mor flag'>";
+        }
+        else{
+            console.log('changed to jor..');
+            changeImg=document.getElementById('img');
+            changeImg.innerHTML="<img src='jor.png' alt='jor flag'>"; 
+        }
+    };
+</script>
+</html>

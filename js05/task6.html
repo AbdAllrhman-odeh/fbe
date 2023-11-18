@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width: 200px;
+            height: 200px;
+            background-color: rgb(122, 122, 122);
+        }
+    </style>
+</head>
+<body>
+    <div id="one">wait 5's!</div>
+</body>
+<script>
+        var index=0;
+        var colors=['red','blue','green','black','gold','yellow','pink'];
+    function changeColor()
+    {
+
+        var content=document.getElementById('one');
+        content.style.backgroundColor=colors[index];
+        index++;
+        if(index+1>colors.length)
+        {
+            index=0;
+        }
+    }
+    setInterval(changeColor,5000);
+</script>
+</html>

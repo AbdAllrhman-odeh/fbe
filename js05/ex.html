@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>examples</title>
+</head>
+<body>
+    <div id="one">
+        he<mark>iiii</mark>llo
+    </div>
+    <div id="two">
+        hello
+    </div>
+    <div class="one">
+        hello
+    </div>
+    <div class="one">
+        hello
+    </div>
+    <form action="">
+        Name:
+        <input type="text" name="name" placeholder="your Name" value="abc"><br>
+        email:
+        <input type="email" name="email" placeholder="your email" value="abcdddd">
+    </form>
+    <hr><br>
+    <form action="">
+        Name:
+        <input type="text" name="name" placeholder="your Name" value="abc"><br>
+        email:
+        <input type="email" name="email" placeholder="your email" value="abcdddd">
+    </form>
+    <a href="asdf">one</a>
+    <a href="asdf">two</a>
+</body>
+<script>
+    var getId=document.getElementById('one');
+    console.log(getId);
+    getId=document.getElementById('two');
+    console.log(getId);
+    var getClass=document.getElementsByClassName('one');
+    console.log(getClass[0]);
+    var getQ=document.querySelector('.one');//#id .class tagName
+    console.log(getQ);
+    var getQs=document.querySelectorAll('div');
+    console.log(getQs);
+
+    console.log(document.title);
+    console.log(document.body);
+    console.log(document.forms);
+    console.log(document.forms[0].name.placeholder);
+    console.log(document.links[0].href);
+
+    getId.setAttribute('style','color:red;font-size:22px;');
+
+    var editLink=document.querySelector('a');
+    editLink.setAttribute('href','www.google.com');
+
+    getId=document.getElementById('one');
+    console.log(getId.innerHTML);
+    console.log(getId.textContent);
+</script>
+</html>

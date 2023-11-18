@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            display: inline;
+            color:red;
+        }
+    </style>
+</head>
+<body>
+    <form action="">
+        password:
+        <input type="password" name="pass1"><div id="note1"></div><br>
+        re-password:
+        <input type="password" name="pass2"><div id="note2"></div><br>
+        <div id="sub"></div>
+    </form>
+</body>
+<script>
+    var x1=document.forms[0].pass1;
+    x1.oninput=function()
+    {
+        if(x1.value.length<6) 
+        {
+            var y1=document.getElementById('note1');
+            y1.innerHTML="less than 6 chars";
+        }
+        else
+        {
+            var y1=document.getElementById('note1');
+            y1.innerHTML="";
+            
+            var x2=document.forms[0].pass2;
+            x2.oninput=function(){
+                if(x2.value!=x1.value)
+                {
+                    var y2=document.getElementById('note2');
+                    y2.innerHTML="password does not match";
+                    var sub=document.getElementById('sub');
+                    sub.innerHTML="";
+                }
+                else
+                {
+                    var y2=document.getElementById('note2');
+                    y2.innerHTML="";
+                    sub=document.getElementById('sub');
+                    if(x1.value==x2.value)
+                    {
+                        sub.innerHTML="<button>save</button>";
+                    }
+                }
+            };
+        }
+    }
+</script>
+</html>

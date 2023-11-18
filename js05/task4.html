@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        h1{
+            display: inline;
+        }
+        div{
+            border: 1px solid black;
+            background-color: bisque;
+            display: inline-block;
+            max-width: 400px;
+            max-height: 400px;
+        }
+        div p{
+            padding: 20px 20px;
+            max-width: 350px;
+            overflow-wrap: break-word;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1>
+            what is lorem?
+        </h1>
+        <a href="#id1" id="show1">show</a>
+        <p id="p1"></p>
+    </div>
+
+
+</body>
+<script>
+    var getId=document.getElementById('show1');
+    getId.onclick=function(){
+        var x=document.getElementById('p1');
+        x.innerHTML="<sapn id='id1' style='color:red; background-color:white;'>adsfffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff</span><br><a href='#id2' onclick=hideFun()>hide</a>";
+        getId.setAttribute('style','display:none');
+    }
+    function hideFun(){
+        var p=document.getElementById('p1');
+        p.innerHTML="";
+        var a=document.getElementById('show1');
+        a.setAttribute('style','display:inline');
+    }
+</script>
+</html>

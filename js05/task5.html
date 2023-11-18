@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="">
+        <select name="sel" id="select" onchange="onchangeFun_select()">
+            <option value="arial" selected>arial</option>
+            <option value="cursive">cursive</option>
+            <option value="system-ui">system-ui</option>
+        </select>
+        <input type="checkbox" name="bold" id="bold" value="bold" onchange="onchnageFunct_bold()"> bold
+        <input type="checkbox" name="underline" id="underline" onchange="onchangeFun_underline()"> underline
+        <input type="checkbox" name="italic" id="italic" onchange="onchange_italic()"> italic
+        <input type="number" min="10" max="50" name="size" id="size" value="22" onchange="onchange_size()" value=""> fontSize(10_50)
+        <br><br>
+        <textarea name="" id="cont" cols="30" rows="10">
+            adsf sadf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf 
+        </textarea>
+    </form>
+</body>
+<script>
+    //control the font-family
+    function onchangeFun_select()
+    {
+        var element=document.forms[0].sel;
+        var content=document.getElementById('cont');
+        if(element.value=='arial'){
+        content.style.fontFamily='arial';
+        }
+        else if(element.value=='cursive'){
+            content.style.fontFamily='cursive';
+        }
+        else if(element.value=='system-ui'){
+            content.style.fontFamily='system-ui';
+        }
+    }
+
+    //control bold
+    function onchnageFunct_bold()
+    {
+        var element=document.getElementById('bold');
+        var content=document.getElementById('cont');
+        if(element.checked)
+        {
+            content.style.fontWeight="bold";
+        }
+        else
+        {
+            content.style.fontWeight="normal";
+        }
+    }
+
+    //cotrol underline
+    function onchangeFun_underline()
+    {
+        var element=document.getElementById('underline');
+        var content=document.getElementById('cont');
+        if(element.checked)
+        {
+            content.style.textDecoration="underline";
+        }
+        else
+        {
+            content.style.textDecoration="none";
+        }
+    }
+
+
+    //control italic
+    function onchange_italic()
+    {
+        var element=document.getElementById('italic');
+        var content=document.getElementById('cont');
+        if(element.checked)
+        {
+            cont.style.fontStyle="italic";
+        }
+        else
+        {
+            cont.style.fontStyle="normal";
+        }
+    }
+
+    //control the fontSize
+    function onchange_size()
+    {
+        var element=document.getElementById('size');
+        var content=document.getElementById('cont');
+        if(element.value>9 && element.value<51)
+        content.style.fontSize=`${element.value}px`;
+    }
+
+</script>
+</html>
