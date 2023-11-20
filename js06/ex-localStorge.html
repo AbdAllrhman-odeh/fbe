@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local storge</title>
+    <style>
+        .all{
+            text-align: center;
+        }
+        #body{
+            background-color: red;
+            width: 203vh;
+            height: 80vh;
+        }
+    </style>
+</head>
+<body onload="onload_function()">
+    <div class="all">
+            <select  id="selects" onchange="onchage_function()">
+                <option value="red" selected>red</option>
+                <option value="black">black</option>
+                <option value="green">green</option>
+                <option value="yellow">yellow</option>
+            </select>
+    </div>
+    <hr>
+    <div id="body">
+
+    </div>
+    <script>
+        var bgColor=document.getElementById('body');
+        var str=document.getElementById('selects');
+        var bg="red";
+        function onchage_function()
+        {
+            if(str.value=='black')
+            {
+                bg="black";
+            }
+            else if(str.value=="green")
+            {   
+                bg="green";
+            }
+            else if(str.value=="yellow")
+            {
+                bg="yellow";
+            }
+            else if(str.value=="red")
+            {   
+                bg="red";
+            }
+            bgColor.style.backgroundColor=`${bg}`;
+            window.localStorage.setItem('bg-color',`${bg}`);
+        }
+        
+        function onload_function() 
+        {
+            var str = document.getElementById('body');
+            var bg_localStorage = window.localStorage.getItem('bg-color');
+            str.style.backgroundColor = bg_localStorage;
+
+            var selects = document.getElementById('selects');
+
+            // Loop through options to find the one with the matching value
+            for (var i = 0; i < selects.options.length; i++)
+            {
+                if (selects.options[i].value === bg_localStorage)
+                {
+                    selects.options[i].selected = true;
+                    break;
+                }
+            }
+        }
+
+    </script>
+</body>
+</html>

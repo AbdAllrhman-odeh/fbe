@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ex2</title>
+    <style>
+        .all{
+            text-align: center;
+        }
+        #body{
+            width: 203vh;
+            height: 80vh;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="all">
+        <select name="" id="selectId" onchange="onchange_function()">
+            <option value="red" selected>red</option>
+            <option value="green">green</option>
+            <option value="blue">blue</option>
+            <option value="black">black</option>
+        </select>
+        <hr>
+        <div id="body">
+
+        </div>
+    </div>
+    <script>
+        // window.localStorage.clear();
+        var selectId=document.getElementById('selectId');
+        var bg="red";
+        function onchange_function()
+        {
+            if(selectId.value=="red")
+            {
+                bg="red";
+            }
+            else if(selectId.value=="green")
+            {
+                bg="green";
+            }
+            else if(selectId.value=="blue")
+            {
+                bg="blue";
+            }
+            else if(selectId.value=="black")
+            {
+                bg="black";
+            }
+            var bodyId=document.getElementById('body');
+            bodyId.style.backgroundColor=`${bg}`;
+            window.localStorage.setItem('bg-color',`${bg}`);
+        }
+        onload=function()
+        {
+            var bodyId=document.getElementById('body');
+            bodyId.style.backgroundColor=`${window.localStorage.getItem('bg-color')}`;
+            for(let i=0;i<selectId.options.length;i++)
+            {
+                if(selectId.options[i].value==`${window.localStorage.getItem('bg-color')}`)
+                {
+                    selectId.options[i].selected=true;
+                    break;
+                }
+            }
+        }
+    </script>
+</body>
+</html>
