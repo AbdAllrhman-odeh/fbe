@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>localStorage.1</title>
+</head>
+<body>
+    <h1><mark>Note:all infot will be saved in the localStorage</mark></h1>
+
+    <form action="" method="" autocomplete="on">
+        <label for="name">Enter your Name:</label>
+        <input type="text" placeholder="Name" id="name" name="name" required><br><br>
+
+        <label for="age">Enter your Age:</label>
+        <input type="number" min="18" max="50" placeholder="Age" id="age" required><br><br>
+
+        <p>Enter your Gender:</p>
+        <input type="radio" id="genderMale" value="male" name="gender">
+        <label for="genderMale">Male</label>
+        <input type="radio" id="genderfeMale" value="feMale" name="gender">
+        <label for="genderfeMale">female</label><br><br>
+
+        <label for="brief">Tell us about your self:</label><br>
+        <textarea name="brief" id="brief" cols="30" rows="10" placeholder="Write here about your self"></textarea><br><br>
+
+        <label for="uni">Enter your Universty:</label>
+        <select name="uni" id="uni">
+        <option value="ju" selected>JU</option>
+        <option value="just">JUST</option>
+        <option value="pust">PUST</option>
+        <div id="img"></div>
+        </select><br>
+
+        Chose your major:
+        <input type="radio" id="cs" name="major" value="cs">
+        <label for="cs">Computer Secience</label>
+
+        <input type="radio" id="cis" name="major" value="cis">
+        <label for="cis">Computer Information Secience</label>
+
+        <input type="radio" id="se" name="major" value="se">
+        <label for="se">Software eng</label><br><br>
+
+        selcet your favLangeuge:
+        <input type="checkbox" value="c++" id="c++">
+        <label for="c++">C++</label>
+
+        <input type="checkbox" value="java" id="java" >
+        <label for="java">JAVA</label>
+        
+        <input type="checkbox" value="python" id="python">
+        <label for="python">PYTHON</label>
+
+        <br><br>
+        <input type="submit" value="ADD TO THE LOCALSTORAGE!" onclick="onclick_function()" id="sub"><br><br>
+        <input type="submit" value="CLEAR THE LOCALSTORAGE!" onclick="onclick_function_clear()">
+    </form>
+    <div id="data">
+    </div>
+</body>
+<script>
+    var id=0;
+    function getId()
+    {
+        if(window.localStorage.getItem('userIdCounter') !=null)
+        {
+            //userIdCounter exist in local storage
+            var x=parseInt(window.localStorage.getItem('userIdCounter'))+1;
+            return x;
+
+        }
+        else
+        {
+            //no userIdCounter in the localStorage
+            id++;
+            return id;
+        }
+
+    }
+    function onclick_function()
+    {
+        //[1]id
+        var get_id=parseInt(getId());
+
+        //[2]name 
+        var name=document.querySelector('#name').value;
+
+        //[3]age
+        var age=document.getElementById('age').value;
+
+        //[4]gender
+        var gender;
+        var mGender=document.getElementById('genderMale');
+        var fGender=document.getElementById('genderfeMale');
+        if(mGender.checked==true) gender='male';
+        else gender='female';
+        
+        //[5]brief
+        var brief=document.getElementById('brief').value;
+
+        //[6]uni
+        var uni=document.getElementById('uni').value;
+
+        //[7]major
+        var major=document.getElementsByName('major');
+        var majorValue;
+        for(let i=0;i<major.length;i++)
+        {
+            if(major[i].checked==true) 
+            {
+                majorValue=major[i].value;
+                break;
+            }
+        }
+
+        //[8]favLang
+        var favLang=[];
+        var x1,x2,x3;
+        x1=document.getElementById('c++');
+        x2=document.getElementById('java');
+        x3=document.getElementById('python');
+        if(x1.checked) favLang.push(x1.value);
+        if(x2.checked) favLang.push(x2.value);
+        if(x3.checked) favLang.push(x3.value);
+
+
+        //data to store
+        var dataToStore = {
+            id: get_id,
+            name: name,
+            age: age,
+            gender: gender,
+            brief: brief,
+            uni: uni,
+            major: majorValue,
+            favLang: favLang
+        };
+        window.localStorage.setItem('userIdCounter', get_id);
+         
+        window.localStorage.setItem(`user${get_id}`, JSON.stringify(dataToStore));
+        showData();
+        // //add the name 
+        // var name=document.getElementById('name');
+        // window.localStorage.setItem('name',`${name.value}`);
+
+        // //add the age
+        // var age=document.getElementById('age').value;
+        // window.localStorage.setItem('age',`${age}`);
+
+        // //add the gender
+        // var genderM=document.getElementById('genderMale');
+        // var genderF=document.getElementById('genderfeMale');
+        // var gender;
+        // if(genderM.checked==true) gender="male";
+        // else if(genderF.checked==true) gender="female";
+        // window.localStorage.setItem('gender',`${gender}`);
+
+        // //add the brief
+        // var brief=document.getElementById('brief').value;
+        // window.localStorage.setItem('brief',`${brief}`);
+
+        // //add the universty
+        // var uni=document.getElementById('uni').value;
+        // window.localStorage.setItem('uinversty',`${uni}`);
+
+        // //add the major
+        // var major=document.getElementsByName('major');
+        // var majorValue;
+        // for(let i=0;i<major.length;i++)
+        // {
+        //     if(major[i].checked==true) 
+        //     {
+        //         majorValue=major[i].value;
+        //         break;
+        //     }
+        // }
+        // window.localStorage.setItem('major',majorValue);
+        // console.log(majorValue);
+
+        // //add the fav language
+        // //[1] check the selceted langs
+        // var favLang=[];
+        // var x1,x2,x3;
+        // x1=document.getElementById('c++');
+        // x2=document.getElementById('java');
+        // x3=document.getElementById('python');
+        // if(x1.checked) favLang.push(x1.value);
+        // if(x2.checked) favLang.push(x2.value);
+        // if(x3.checked) favLang.push(x3.value);
+        // //[2] add the fav lang to the localStorage
+        // window.localStorage.setItem('favLang',favLang);
+        
+    }
+    
+
+    function onclick_function_clear()
+    {
+        window.localStorage.clear();
+    }
+
+    function showData()
+    {
+        var currentId=parseInt(window.localStorage.getItem('userIdCounter'));
+        var info=JSON.parse(window.localStorage.getItem(`user${currentId}`));
+        var data=document.getElementById('data');
+        data.innerHTML=`<mark>Your info</mark><br>Id:${info.id}, name:${info.name}, Age:${info.age}, Gender:${info.gender}, breif:${info.brief}, major:${info.major}, favLang:${info.favLang}`;
+    }
+    
+    var sub=addEventListener('click',showData());
+</script>
+</html>
