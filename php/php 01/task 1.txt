@@ -1,0 +1,183 @@
+1. Write a PHP script to get the PHP version and configuration information.
+soul:
+<?php
+    $phpVer=phpVersion();//get the version
+    $phpInfo=phpinfo();//get the config
+    echo($phpVer.'<br>');
+    echo($phpInfo.'<br>');
+?>
+
+2. Write a PHP script to display the following strings. 
+ Sample String:
+'Tomorrow I 'll learn PHP global variables.'
+'This is a bad command: del c:\.'
+Expected Output:
+Tomorrow I'll learn PHP global variables.
+This is a bad command: del c:*. *
+/*
+soul:
+<?php
+	$var = "Tomorrow I'll learn PHP global variables.<br>
+		This is a bad command: del c:*. *";
+	echo($var);
+ ?>
+*/
+
+3. Create a simple HTML form and accept the user’s name and display the name through a PHP echo statement.
+/*
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>task1</title>
+</head>
+<body>
+    <form method="GET" >
+        <label for="userName">Enter your name:</label>
+        <input type="text" id="userName" name="userName"><br><br>
+    </form>
+</body>
+</html>
+
+<?php
+    if($_GET)
+    {
+        $var =$_GET['userName'];
+        echo($var);
+    }
+
+
+
+?>
+*/
+
+4. Write a PHP script to get the client's IP address.
+<?php
+$clientIp = $_SERVER['REMOTE_ADDR'];
+echo $clientIp;
+?>
+
+5. Write a PHP script to get the current file name.
+<?php
+    $var = basename(__FILE__);
+    echo($var);
+?>
+6. Write a PHP script, which will return the following components of the URL https://www.w3schools.com/php/default.asp.
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>task1</title>
+</head>
+<body>
+</body>
+</html>
+
+<?php
+
+function getScheme($var)
+{
+    //[1]get the scheme
+    $scheme="";
+    $flag=true;
+    $x1=0;
+    for($i=0;$i<strlen($var);$i++)
+    {
+        if($var[$i]=='/')
+        {
+            //get the first '/'
+            $x1=$i;
+            break;
+        }
+    }
+    $scheme=str_split($var,$x1-1);
+    // var_dump($scheme[0]);
+    return $scheme[0];
+
+}
+function getHost($var)
+{
+    //[2]host
+    for($i=0;$i<strlen($var);$i++)
+    {
+        if($var[$i]=='w' && $var[$i+1]=='w' && $var[$i+2]=='w')
+        {
+            $indexOfChar=strpos($var,'/',$i);//get the postion of the second '/'
+            $str=substr($var,$i);//delete the https:// or http://
+            //make the url with out the path
+            //www.w3schools.com/php/default.asp
+            //get the postion of the third '/'
+            $indexOfChar=strpos($str,'/',$i);
+            $str=substr($str,0,$indexOfChar);
+            echo('Host:'.$str.'<br>');
+        }
+    }
+}
+
+function getPath($var)
+{
+    //[3]path
+    for($i=0;$i<strlen($var);$i++)
+    {
+        if($var[$i]=='w' && $var[$i+1]=='w' && $var[$i+2]=='w')
+        {
+            $indexOfChar=strpos($var,'/',$i);//get the postion of the second '/'
+            $str=substr($var,$i);//delete the https:// or http://
+            //make the url with out the path
+            //www.w3schools.com/php/default.asp
+            //get the postion of the third '/'
+            $indexOfChar=strpos($str,'/',$i);
+            $str=substr($str,$indexOfChar);
+            echo('path:'.$str.'<br>');
+        }
+    }
+}
+
+$url = "https://www.w3schools.com/php/default.asp";
+$scheme=getScheme($url);
+echo('Scheme:'.$scheme.'<br>');
+getPath($url);
+getHost($url);
+
+//using built function 
+// Parse the URL
+// $urlComponents = parse_url($url);
+
+// // Display the components
+// echo "Scheme: " . $urlComponents['scheme'] . "<br>";
+// echo "Host: " . $urlComponents['host'] . "<br>";
+// echo "Path: " . $urlComponents['path'] . "<br>";
+// echo "Query: " . $urlComponents['query'] . "<br>";
+    // $scheme=getScheme($url);
+    // $x='php tutorial';
+    // $y=changeTheFirstCharColor($x);
+    // echo($y);
+?>
+
+
+
+7. Write a PHP script, which changes the color of the first character of a word.
+Sample string: PHP Tutorial.
+function changeTheFirstCharColor($x){
+    $y='<span style="color:red">'.$x[0].'</span>';
+    for($i=1;$i<strlen($x);$i++)
+    {
+        $y.=$x[$i];
+    }
+    // return $y;
+    echo($y);
+}
+
+
+    $x='php tutorial';
+    $y=changeTheFirstCharColor($x);
+
+8. Write a PHP script to redirect a user to a different page.
+ Expected output: Redirect the user to https://www/. w3schools.com/
+function redirect(){
+    header("Location: https://www.w3schools.com/");
+    exit();
+}
+redirect();
